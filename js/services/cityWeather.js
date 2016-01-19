@@ -1,0 +1,80 @@
+weatherApp.service('cityWeather',function($resource, $routeParams, $q){
+    
+    this.city = "Pune";
+    this.cityHistroy = [];
+    
+    this.getWeatherInfo = function(myCity, successCB)
+    {
+        var deffered = $q.defer();
+        
+        var that = this;
+        this.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily",
+                                    {callback:"JSON_CALLBACK"},
+                                    {get:{method:"JSONP"}}
+                                   );
+        
+        this.appid = '2de143494c0b295cca9337e1e96b00e0';
+    
+        this.units= 'metric';
+        
+        this.days = $routeParams.days || 6;
+    
+        this.weatherAPI.get({units:this.units,q:myCity, cnt:this.days, appid:this.appid})
+        .$promise.then(function(data) {
+            
+            deffered.resolve(data);
+        },
+        function(error) {
+            deffered.reject("Error "+error);
+            
+        });        
+        
+        return deffered.promise;
+        
+    };
+    
+    
+    this.getMapData = function(tempWeatherData)
+    {
+        var mapData = {};
+        
+        var maxData  = tempWeatherData.list.map(function(a) {return getGoodData(a,"max");});
+        var minData  = tempWeatherData.list.map(function(a) {return getGoodData(a,"min");});
+        var dayData  = tempWeatherData.list.map(function(a) {return getGoodData(a,"day");});
+        var nightData  = tempWeatherData.list.map(function(a) {return getGoodData(a,"night");});
+        
+        function getGoodData(dayObject,option)
+        {
+            return [dayObject.dt* 1000,dayObject.temp[option]];
+        };  
+        
+        mapData = [
+            {
+                "key": "Max",
+                "values": maxData,
+                color: 'red'
+            },
+
+            {
+                "key": "Min",
+                "values": minData,
+                color: 'blue'
+            },
+
+            {
+                "key": "Day",
+                "values": dayData,
+                color: 'orange'
+            },
+
+            {
+                "key": "Night",
+                "values": nightData,
+                color: 'black'
+            }
+        ];
+        
+        return mapData;
+    }
+    
+});
