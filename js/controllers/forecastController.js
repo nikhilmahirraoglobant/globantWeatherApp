@@ -1,4 +1,4 @@
-weatherApp.controller('forecastController',function($scope, $state, $timeout, cityWeather){
+weatherApp.controller('forecastController',function($scope, $state, $timeout, $filter, cityWeather){
     
     $scope.isPageLoaded = false;
     

@@ -62,12 +62,6 @@ weatherApp.controller('homeController',function($scope, $location, $state, $filt
         }       
     };    
    
-    
-    $scope.convertToDate = function(dt){
-        
-        return new Date(dt * 1000);
-    };
-    
     $scope.map = {
         
         center: [18.5203,73.8567],
