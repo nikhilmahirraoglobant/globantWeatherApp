@@ -8,6 +8,7 @@ weatherApp.controller('forecastController',function($scope, $state, $timeout, $f
     .then(function(data){
         $scope.weatherResult = data; 
         $scope.exampleData = cityWeather.getMapData($scope.weatherResult);
+        $scope.dates = cityWeather.getDates($scope.weatherResult);
         
         $scope.isPageLoaded = true;
   
@@ -22,11 +23,6 @@ weatherApp.controller('forecastController',function($scope, $state, $timeout, $f
             return d3.time.format('%d-%b-%y')(new Date(d));  //uncomment for date format
         }
     }
-    
-    $scope.convertToDate = function(dt){
-        
-        return new Date(dt * 1000);
-    };
     
     //Tabs
     $scope.tabs = [{

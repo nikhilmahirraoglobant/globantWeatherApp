@@ -33,6 +33,17 @@ weatherApp.service('cityWeather',function($resource, $routeParams, $q){
         
     };
     
+    this.getDates = function(tempWeatherData)
+    {
+        var maxData  = tempWeatherData.list.map(function(a) {return getGoodData(a,"max");});
+        
+        function getGoodData(dayObject,option)
+        {
+            return (dayObject.dt* 1000);
+        };
+        
+        return maxData;
+    }
     
     this.getMapData = function(tempWeatherData)
     {
