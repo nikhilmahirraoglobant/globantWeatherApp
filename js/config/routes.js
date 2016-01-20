@@ -7,24 +7,27 @@ weatherApp.config(function(localStorageServiceProvider,$stateProvider, $urlRoute
         .state('home', {
             url: '/home',
             templateUrl: 'view/pages/home.htm',
-            controller: 'homeController'
+            controller: 'homeController',
+           
         })
         
         .state('forecast', {
             url: '/forecast',
             templateUrl:'view/pages/forecast.htm',
-            controller: 'forecastController'
+            controller: 'forecastController',
+         
         })
         
         .state('forecast.days', {
             url: '/days',
-            templateUrl: 'view/pages/days.htm'
-            
+            templateUrl: 'view/pages/days.htm',
+         
         })
 
         .state('forecast.graph', {
             url: '/graph',
             templateUrl: 'view/pages/graph.htm',
+        
         });
     
     

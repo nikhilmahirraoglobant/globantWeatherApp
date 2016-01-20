@@ -1,9 +1,7 @@
 <h4 class="col-md-6 col-md-offset-3">Forecast city {{city}}
 <hr/></h4>
 
- 
-
-<div ng-show="isPageLoaded" ng-animate="'animate'">
+<div ng-show="isPageLoaded" >
 
     <div class = "col-md-6 col-md-offset-3">    
         <ul class="nav nav-tabs ">
@@ -15,7 +13,7 @@
     </div>
     
     <div class="subTabContainer">
-        <div ui-view></div>
+        <div ui-view class="view-animate"></div>
     </div>
     
 </div>
