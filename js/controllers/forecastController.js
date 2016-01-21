@@ -11,7 +11,8 @@ weatherApp.controller('forecastController',function($scope, $state, $timeout, $f
         $scope.dates = cityWeather.getDates($scope.weatherResult);
         
         $scope.isPageLoaded = true;
-  
+        
+        $state.go("forecast.days");
     },
     function(error){
         //console.log("Failed");

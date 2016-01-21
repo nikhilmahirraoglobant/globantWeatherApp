@@ -29,7 +29,7 @@ weatherApp.controller('homeController',function($scope, $location, $state, $filt
         {
             var citiesArr = historyService.updateHistory($scope.city);
 
-            $state.go("forecast.days");
+            $state.go("forecast");
        };
     };
     
