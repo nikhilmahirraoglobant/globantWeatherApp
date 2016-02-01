@@ -13,7 +13,7 @@ weatherApp.service('cityWeather',function($resource, $routeParams, $q){
                                     {get:{method:"JSONP"}}
                                    );
         
-        this.appid = '2de143494c0b295cca9337e1e96b00e0';
+        this.appid = '8e667bfe426b3246f76f50f038bbabae';
     
         this.units= 'metric';
         

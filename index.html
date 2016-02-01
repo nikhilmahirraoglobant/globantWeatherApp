@@ -32,6 +32,7 @@
         
         <script src="js/modules/app.js"></script>
         
+        <script src="js/controllers/mainController.js"></script>
         <script src="js/controllers/forecastController.js"></script>
         <script src="js/controllers/homeController.js"></script>
         
@@ -51,7 +52,7 @@
     
     <body>
         
-        <header>
+        <header ng-controller="mainController">
             <nav class="navbar navbar-default header">
                 <div class="container">
                     <div class="navbar-header">
@@ -60,14 +61,16 @@
 
                     <ul class="nav navbar-nav navbar-right" >
                         <li><a ui-sref="home" id="subhead"><i class="fa fa-home"></i> Home</li></a>
+                        <li> <a ng-click="toggle()" class="btn">{{languages[stateIndex]}}</a></li>
                     </ul>
-                </div>
+                
+                </div>                        
             </nav>
-         </header>  
         
+         </header>          
         
-        <div ui-view class="view-animate"></div>
-       
+         <div ui-view class="view-animate"></div>
+        
     </body>
 
 </html>

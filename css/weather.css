@@ -23,10 +23,14 @@ ng-map
 
 .subTabContainer
 {
-    
     width: 100%;
-    padding-top: 11%;
 }
+
+.subTab
+{
+    padding-bottom: 10px;
+}
+
 .header
 {
     background-color:#0AB3D3;
@@ -66,7 +70,9 @@ svg text {
    color: #272727; 
 }
 
-
+button.on {
+    background-color: lightgreen;
+}
 
 /*Animations*/
 
